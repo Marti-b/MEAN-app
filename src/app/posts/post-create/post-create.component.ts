@@ -7,4 +7,8 @@ import {Component} from '@angular/core';
 })
 
 
-export class PostCreateComponent {}
+export class PostCreateComponent {
+  onAddPost(){
+    alert('Message Added');
+  }
+}
