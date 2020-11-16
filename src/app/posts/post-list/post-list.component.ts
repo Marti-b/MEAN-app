@@ -2,6 +2,7 @@ import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit, Input } from '@angular/core';
 import { title } from 'process';
 import { Post } from '../post.model';
+import { PostsService } from '../posts.service';
 
 @Component({
   selector: 'app-post-list',
@@ -15,8 +16,11 @@ export class PostListComponent implements OnInit {
      { title: 'Third Post', content: 'This is the third post\'s content ' }
    ]; */
   @Input() posts: Post[] = [];
+  postService: PostsService;
 
-  constructor() { }
+  constructor(postsService: PostsService) {
+    this.postService = postsService;
+  }
 
   ngOnInit() {
   }
