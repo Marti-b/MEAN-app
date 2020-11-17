@@ -34,7 +34,7 @@ import { PostsService } from './posts/posts.service';
 
   ],
 
-  providers: [PostsService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
