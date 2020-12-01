@@ -16,10 +16,10 @@ export class PostsService {
 
   getPosts() {
     return this.http.get<{ message: string, posts: Post[] }>('http://localhost:3000/api/posts')
-    .subscribe((postData) => {
-      this.posts = postData.posts;
-      this.postsUpdated.next([...this.posts]);
-    });
+      .subscribe((postData) => {
+        this.posts = postData.posts;
+        this.postsUpdated.next([...this.posts]);
+      });
   }
 
   getPostUpdateListener() {
@@ -28,7 +28,12 @@ export class PostsService {
 
   addPost(id: string, title: string, content: string) {
     const post: Post = { id: null, title: title, content: content };
+    this.http.post<{ message: string }>('http://localhost:3000/api/posts', post)
+      .subscribe((responseData) => {
+        console.log(responseData.message);
+    });
     this.posts.push(post);
     this.postsUpdated.next([...this.posts]);
+
   }
 }
