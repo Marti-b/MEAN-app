@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { stringify } from 'querystring';
+
 import { Subject } from 'rxjs';
 
 import { Post } from './post.model';
@@ -27,7 +27,7 @@ export class PostsService {
   }
 
   addPost(id: string, title: string, content: string) {
-    const post: Post = { id: null, title: title, content: content };
+    const post: Post = { id: null, title, content };
     this.http.post<{ message: string }>('http://localhost:3000/api/posts', post)
       .subscribe((responseData) => {
         console.log(responseData.message);
